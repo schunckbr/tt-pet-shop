@@ -5,7 +5,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import br.com.tt.web.pet.dao.PetDao;
+import br.com.tt.web.pet.dao.Dao;
 import br.com.tt.web.pet.model.Pet;
 
 @ManagedBean
@@ -13,8 +13,8 @@ import br.com.tt.web.pet.model.Pet;
 public class PetBean {
 
 	private Pet pet = new Pet();
-	private PetDao petDao = new PetDao();
-	private List<Pet> lista = petDao.buscarTodos();
+	private Dao petDao = new Dao();
+	private List<Pet> lista = petDao.buscarTodos(pet);
 
 	public Pet getPet() {
 		return pet;
@@ -26,7 +26,7 @@ public class PetBean {
 
 	public void salvar() {
 		petDao.salvar(pet);
-		lista = petDao.buscarTodos();
+		lista = petDao.buscarTodos(pet);
 		pet = new Pet();
 	}
 
